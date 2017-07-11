@@ -11,12 +11,13 @@ module.exports = function($) {
         obj.prototype = $.extends('!controller', {
             is: function(data) {
                 var key = data.authorization || data.headers.authorization;
+				console.log(data, key);
                 if (key == 'password') {
                     return (true);
                 }
                 //return $.promise().reject(this.res().status(400).data('A100'));
                 // or
-                return respond.code($.promise().reject('A100'));
+                return $.promise().reject(respond.code('A100'));
             }
         });
 
