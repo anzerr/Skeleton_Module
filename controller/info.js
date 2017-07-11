@@ -18,7 +18,7 @@ module.exports = function($) {
 			}),
 
 			getFile: function(data) {
-				const path = $.path('module!/public/' + data.url.substr(11, data.url.length - 11));
+				const path = $.path('module!/public/' + data.url.substr(4, data.url.length - 4));
 				return (this.file({contentDisposition: 'inline', path: path}));
 			}
 		});
