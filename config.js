@@ -1,31 +1,24 @@
 "use strict";
 
-module.exports = function(r, i) {
+module.exports = function() {
 	return ({
-		dependencies: {
-			jszip: '2.4.0'
-		},
+		dependencies: {},
 		route: [
-			r.create().set({
-				method: ['get'],
-				path: '/user/:user',
-				param: {
-					user: '.*'
-				},
-				action: {
-					controller: 'user',
-					method: 'get'
-				}
-			})
+			'config/info.js'
+		],
+		cdn: [ // normal way to serve up files
+            {
+                path: '/public/',
+                priority: 1,
+                source: 'public'
+            }
 		],
 		import: [
-			/*
-			i.create().set({
-				module: 'other_module',
-				as: 'rename_when_importing',
-				path: '/entity/class/static.js' // path to object to import
-			}),
-			*/
+			{
+				module: 'generic',
+				as: 'respond',
+				path: '/entity/respond.js'
+			}
 		]
 	});
 };
